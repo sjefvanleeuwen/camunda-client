@@ -1,5 +1,8 @@
 language: csharp
-solution: ./src/solution.sln
 mono: none
 dotnet: 2.0.0
 dist: trusty
+
+script:
+  - dotnet build .\camunda-client\
+  - dotnet test .\camunda-client-tests\
