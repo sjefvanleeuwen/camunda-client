@@ -7,9 +7,9 @@
     <description>
       Camunda Client
     </description>
-  
     <authors>Sjef van Leeuwen</authors>
-
+    <licenseUrl>https://github.com/sjefvanleeuwen/camunda-client/blob/master/LICENSE</licenseUrl>
+    <projectUrl>hhttps://github.com/sjefvanleeuwen/camunda-client</projectUrl>
   </metadata>
   <files>
       <file src="./" exclude="*" />
