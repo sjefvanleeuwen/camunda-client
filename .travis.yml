@@ -3,7 +3,7 @@ mono: none
 dotnet: 2.0.0
 dist: trusty
 notifications:
-  - slack: wigo4it:GdebqlKcoyti7ff14Vnt1IHD
+  slack: wigo4it:GdebqlKcoyti7ff14Vnt1IHD
 script:
   - dotnet build ./src/camunda-client/
   - dotnet test ./src/camunda-client-tests/
