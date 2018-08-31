@@ -33,7 +33,12 @@ namespace CamundaClient.Dto
             // is not very sophisticated; do not create folder names with leading
             // underscores, otherwise the dot separating that folder from the previous
             // one will appear to be just an escaped dot!
-
+            bool isWindows = false;
+            string windir = Environment.GetEnvironmentVariable("windir");
+            if (!string.IsNullOrEmpty(windir) && windir.Contains(@"\") && Directory.Exists(windir))
+            {
+                isWindows = true;
+            }
             StringBuilder sb = new StringBuilder();
             bool escapeDot = false, haveExtension = false;
 
@@ -51,7 +56,10 @@ namespace CamundaClient.Dto
                     {
                         if (haveExtension)
                         {
-                            sb.Append('\\');
+                            if (!isWindows) 
+                                sb.Append('/');
+                            else
+                                sb.Append('\\');
                             continue;
                         }
                         haveExtension = true;
