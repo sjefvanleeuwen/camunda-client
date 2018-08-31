@@ -4,5 +4,5 @@ dotnet: 2.0.0
 dist: trusty
 
 script:
-  - dotnet build .\src\camunda-client\
-  - dotnet test .\src\camunda-client-tests\
+  - dotnet build ./src/camunda-client/
+  - dotnet test ./src/camunda-client-tests/
