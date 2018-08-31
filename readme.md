@@ -5,13 +5,13 @@ Camunda client, derived from https://github.com/berndruecker/camunda-dot-net-sho
 
 #### Package Manager
 ```
-PM> Install-Package CamundaClient -Version 0.0.2
+PM> Install-Package CamundaClient -Version 0.0.3
 ```
 #### .NET Cli
 ```
-> dotnet add package CamundaClient --version 0.0.2
+> dotnet add package CamundaClient --version 0.0.3
 ```
 #### Packet Cli
 ```
-> paket add CamundaClient --version 0.0.2
+> paket add CamundaClient --version 0.0.3
 ```
