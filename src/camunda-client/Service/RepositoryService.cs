@@ -76,7 +76,7 @@ namespace CamundaClient.Service
             }
         }
 
-        public string Deploy(string deploymentName, List<object> files)
+        public string Deploy(string deploymentName, List<FileParameter> files)
         {
             Dictionary<string, object> postParameters = new Dictionary<string, object>();
             postParameters.Add("deployment-name", deploymentName);
@@ -95,6 +95,28 @@ namespace CamundaClient.Service
             }
         }
 
+        public static List<FileParameter> GetResourceFiles()
+        {
+            var files = new List<FileParameter>();
+            Assembly thisExe = Assembly.GetCallingAssembly();
+            string[] resources = thisExe.GetManifestResourceNames();
+
+            if (resources.Length == 0)
+            {
+                return files;
+            }
+
+            foreach (string resource in resources)
+            {
+                // TODO Check if Camunda relevant (BPMN, DMN, HTML Forms)
+                // Read and add to Form for Deployment
+                var fileParameter = FileParameter.FromManifestResource(thisExe, resource);             
+                files.Add(fileParameter);
+                Console.WriteLine($"Adding resource to deployment: {fileParameter.FileName}");
+            }
+            return files;
+        }
+
         public void AutoDeploy()
         {
             Assembly thisExe = Assembly.GetEntryAssembly();
@@ -105,7 +127,7 @@ namespace CamundaClient.Service
                 return;
             }
 
-            List<object> files = new List<object>();
+            var files = new List<FileParameter>();
             foreach (string resource in resources)
             {
                 // TODO Check if Camunda relevant (BPMN, DMN, HTML Forms)
